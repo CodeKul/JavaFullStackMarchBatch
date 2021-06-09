@@ -5,7 +5,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value = "prototype")
+@Scope(value = "singleton")
+//prototype
 public class Company {
 
     int id;
