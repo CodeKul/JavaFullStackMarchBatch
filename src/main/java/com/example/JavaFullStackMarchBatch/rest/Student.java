@@ -1,8 +1,12 @@
 package com.example.JavaFullStackMarchBatch.rest;
 
+import javax.persistence.Entity;
+
+
 public class Student {
     int id;
     String name;
+    Integer contact;
 
     public int getId() {
         return id;

@@ -22,11 +22,11 @@ public class Company {
     }
 
     //field based injection
-//    @Autowired
-//    private Employee employee;
+    @Autowired
+    private Employee employee;
 
     //constructor based injection
-    private Employee employee;
+//    private Employee employee;
 
 //    @Autowired
 //    public Company(Employee employee){
