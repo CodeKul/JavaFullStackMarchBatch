@@ -11,13 +11,13 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+    private Integer id;
 
-    String name;
+    private String name;
 
-    String address;
+    private String address;
 
-    Integer contact;
+    private Integer contact;
 
     public Integer getContact() {
         return contact;
