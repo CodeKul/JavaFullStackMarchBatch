@@ -37,6 +37,33 @@ public class EmployeeController {
 
     }
 
+//
+//    @DeleteMapping(value = "deleteEmployee/{id}")
+//    public String  deleteEmp(@PathVariable(value = "id")Integer id){
+//        employeeRepository.deleteById(id);
+//        return "deleted employee of id=>"+id;
+//    }
+//
+
+//    @DeleteMapping(value = "deleteEmployee/{id}")
+//    public String  deleteEmp(@PathVariable(value = "id")Integer id){
+//       Employee employee= employeeRepository.getById(id);
+//       employeeRepository.delete(employee);
+//        return "deleted employee of id=>"+id;
+//    }
+
+//   @DeleteMapping(value = "deleteEmployee")
+//    public String  deleteEmp(){
+//       employeeRepository.deleteAll();
+//        return "deleted employee of id=>";
+//    }
+
+   @DeleteMapping(value = "deleteEmployee/{id}")
+    public String  deleteEmp(@PathVariable(value = "id")List<Integer> id){
+       employeeRepository.deleteAllById(id);
+        return "deleted employee of id=>"+id;
+    }
+
 
 
 }
