@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -65,7 +66,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "getEmpById/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable(value = "id")Integer id){
+    public Optional<Employee> getEmployeeById(@PathVariable(value = "id") Integer id) {
         Optional<Employee> e = employeeRepository.findById(id);
 //        select * from employee where id =?
         return e;
@@ -73,33 +74,45 @@ public class EmployeeController {
 
 
     @GetMapping(value = "getEmpByName/{name}")
-    public Employee getEmpByName(@PathVariable(value = "name")String name){
-       Employee e= employeeRepository.findByName(name);
+    public Employee getEmpByName(@PathVariable(value = "name") String name) {
+        Employee e = employeeRepository.findByName(name);
         return e;
     }
 
     @GetMapping(value = "getEmpByAddress/{address}")
-    public List<Employee> getEmpByAddress(@PathVariable(value = "address")String address){
+    public List<Employee> getEmpByAddress(@PathVariable(value = "address") String address) {
         List<Employee> e = employeeRepository.findByAddress(address);
         return e;
     }
 
-   @GetMapping(value = "getEmpByNameAndAddress")
+    @GetMapping(value = "getEmpByNameAndAddress")
     public Employee getEmpByAddress(@RequestParam(required = false) String name,
-                                    @RequestParam String address){
-        Employee e = employeeRepository.findByNameAndAddress(name,address);
+                                    @RequestParam String address) {
+        Employee e = employeeRepository.findByNameAndAddress(name, address);
         return e;
     }
 
-   @GetMapping(value = "getEmpSt")
-    public List<Employee> getEmpSt(@RequestParam String name){
+    @GetMapping(value = "getEmpSt")
+    public List<Employee> getEmpSt(@RequestParam String name) {
         List<Employee> e = employeeRepository.findByNameStartingWith(name);
         return e;
     }
 
-   @GetMapping(value = "getEmpContaining")
-    public List<Employee> getEmpContaining(@RequestParam String name){
+    @GetMapping(value = "getEmpContaining")
+    public List<Employee> getEmpContaining(@RequestParam String name) {
         List<Employee> e = employeeRepository.findByNameContaining(name);
+        return e;
+    }
+
+    @GetMapping(value = "getEmpLike")
+    public List<Map<String,String>>getEmpLike(@RequestParam String name) {
+        List<Map<String,String>> e = employeeRepository.findByNameLike(name);
+        return e;
+    }
+
+    @GetMapping(value = "getEMpIgnoreCase")
+    public List<Employee>  getEMpIgnoreCase(@RequestParam String name) {
+        List<Employee> e = employeeRepository.findByNameIgnoreCase(name);
         return e;
     }
 }
