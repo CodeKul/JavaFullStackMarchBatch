@@ -5,8 +5,11 @@ import com.example.JavaFullStackMarchBatch.onetoone.domain.User;
 import com.example.JavaFullStackMarchBatch.onetoone.repository.AddressRepo;
 import com.example.JavaFullStackMarchBatch.onetoone.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class UserController {
@@ -18,17 +21,17 @@ public class UserController {
     private AddressRepo addressRepo;
 
     @PostMapping(value = "saveUser")
-    public String saveUser(){
+    public String saveUser() {
 
         User user = new User();
-        user.setName("Ravi");
+        user.setName("Akash");
         user.setContact(12132);
 
 
         Address address = new Address();
-        address.setAddress("Kothrud");
-        address.setCity("Pune");
-        address.setPinCode(123432);
+        address.setAddress("Kolhapur");
+        address.setCity("Kolhapur");
+        address.setPinCode(234234);
 
         address.setUser(user);
         user.setAddress(address);
@@ -39,4 +42,11 @@ public class UserController {
         return "User saved";
 
     }
+
+
+    @GetMapping(value = "getUsers")
+    public List<User> getUser() {
+        return userRepo.findAll();
+    }
+
 }
