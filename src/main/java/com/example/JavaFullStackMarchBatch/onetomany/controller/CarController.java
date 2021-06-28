@@ -42,8 +42,10 @@ public class CarController {
         obj2.setCar(car);
         spareRepo.save(obj2);
 
+
         sparePartList.add(obj1);
         sparePartList.add(obj2);
+//        spareRepo.saveAll(sparePartList);
 
         car.setSparePart(sparePartList);
         carRepo.save(car);
