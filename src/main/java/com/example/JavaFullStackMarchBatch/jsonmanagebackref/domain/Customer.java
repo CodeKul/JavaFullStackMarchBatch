@@ -1,13 +1,12 @@
-package com.example.JavaFullStackMarchBatch.onetomany.domain;
+package com.example.JavaFullStackMarchBatch.jsonmanagebackref.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 @Entity
-public class Manager {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,12 +14,11 @@ public class Manager {
 
     private String name;
 
-    private Integer contact;
-
     private String address;
 
-    @OneToMany(mappedBy = "manager",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<EmployeeM> employeeM;
+    @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Orders> orders;
 
     public Integer getId() {
         return id;
@@ -38,14 +36,6 @@ public class Manager {
         this.name = name;
     }
 
-    public Integer getContact() {
-        return contact;
-    }
-
-    public void setContact(Integer contact) {
-        this.contact = contact;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -54,11 +44,11 @@ public class Manager {
         this.address = address;
     }
 
-    public List<EmployeeM> getEmployeeM() {
-        return employeeM;
+    public List<Orders> getOrders() {
+        return orders;
     }
 
-    public void setEmployeeM(List<EmployeeM> employeeM) {
-        this.employeeM = employeeM;
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
     }
 }
