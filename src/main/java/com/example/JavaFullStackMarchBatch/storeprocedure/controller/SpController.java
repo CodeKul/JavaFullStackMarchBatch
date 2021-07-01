@@ -26,7 +26,7 @@ public class SpController {
     }
 
     @RequestMapping(value = "/spGetEmployee", method = RequestMethod.GET)
-    public ResponseEntity<?> spGetEmployee() {
+    private ResponseEntity<?> spGetEmployee() {
         List<Map<String,String>> list = spRepository.spEmployeeData();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
