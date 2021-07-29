@@ -5,12 +5,10 @@ import com.example.JavaFullStackMarchBatch.colorlib.repository.ColorLibRepositor
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "api/colorlib/")
 public class ColorLibController {
 
     @Autowired
@@ -25,7 +23,7 @@ public class ColorLibController {
     @GetMapping(value = "getColorLib")
     public ResponseEntity<?>getColorLib(){
 
-        return new ResponseEntity<>(colorLibRepository.findAll(),HttpStatus.FOUND);
+        return new ResponseEntity<>(colorLibRepository.findAll(),HttpStatus.OK);
     }
 
 
