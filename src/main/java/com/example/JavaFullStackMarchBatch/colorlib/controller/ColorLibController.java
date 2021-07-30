@@ -26,6 +26,4 @@ public class ColorLibController {
         return new ResponseEntity<>(colorLibRepository.findAll(),HttpStatus.OK);
     }
 
-
-
 }
