@@ -31,4 +31,7 @@ public class Registration {
 
     private String confirmPassword;
 
+    private String gender;
+
+
 }
