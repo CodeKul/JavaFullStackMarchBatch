@@ -16,12 +16,12 @@ public class RegistrationController {
     private RegistraationRepo registraationRepo;
 
     @PostMapping(value = "saveUser")
-    public ResponseEntity<?>saveUser(@RequestBody Registration registration){
+    public String saveUser(@RequestBody Registration registration){
         if(registration.getConfirmPassword().equals(registration.getPassword())){
             registraationRepo.save(registration);
-            return new ResponseEntity<>("save...", HttpStatus.OK);
+            return registration.getEmail();
         }else {
-            return new ResponseEntity<>("password and confirm password is not matched", HttpStatus.OK);
+            return registration.getEmail();
         }
     }
 

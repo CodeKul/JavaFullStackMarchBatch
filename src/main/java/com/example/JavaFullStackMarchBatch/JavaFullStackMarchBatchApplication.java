@@ -1,6 +1,7 @@
 package com.example.JavaFullStackMarchBatch;
 
 import com.example.JavaFullStackMarchBatch.aop.BoyStudent;
+import com.example.JavaFullStackMarchBatch.aop.GirlStudent;
 import com.example.JavaFullStackMarchBatch.aop.Human;
 import com.example.JavaFullStackMarchBatch.di.Company;
 import org.springframework.boot.SpringApplication;
@@ -23,8 +24,12 @@ public class JavaFullStackMarchBatchApplication {
 //		human.wakeUp();
 
 		BoyStudent boyStudent = context.getBean(BoyStudent.class);
-		boyStudent.study();
+		//JointPoint(Before)
+		boyStudent.studyTwo(1,2);
+		//JointPoint(After)
 
+		GirlStudent girlStudent = context.getBean(GirlStudent.class);
+		girlStudent.studyOne();
 //		human.sleep();
 
 	}
